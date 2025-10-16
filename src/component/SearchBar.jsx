@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const SearchBar = () => {
+const SearchBar = ({onSearch}) => {
     const[city , setCity] = useState("")
     const handleOnChange=(e)=>{
         setCity(e.target.value)
@@ -9,11 +9,12 @@ const SearchBar = () => {
     }
     const handleClick=()=>{
         console.log(city)
+        onSearch(city)
     }
     
   return (
     <div>
-        <input type="text"  placeholder='search a city name' onChange={handleOnChange} />
+        <input type="text"  placeholder='search a city name' onChange={handleOnChange} value={city}/>
         <button onClick={handleClick} >Submit</button>
     </div>
   )
